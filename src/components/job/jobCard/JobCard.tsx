@@ -19,10 +19,7 @@ const JobCard = ({ post }) => {
 
           {/* Apply Link */}
           <Link href={`/career-apply/${post?._id}`} passHref>
-            <div
-              className='flex items-center text-blue-400 cursor-pointer'
-              target='_blank'
-            >
+            <div className='flex items-center text-blue-400 cursor-pointer'>
               <span className='mr-2'>Apply</span>
               <FiArrowRight />
             </div>

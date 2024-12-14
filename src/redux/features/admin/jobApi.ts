@@ -41,7 +41,7 @@ const jobPostApi = baseApi.injectEndpoints({
         url: `/job/${id}`,
         method: "DELETE",
       }),
-      invalidatesTags: ["job"], // Use invalidatesTags to invalidate the cache
+      invalidatesTags: ["job"],
     })
   }),
 });

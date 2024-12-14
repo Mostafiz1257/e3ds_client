@@ -1,11 +1,10 @@
 import {
   FaMapMarkerAlt,
-  FaMoneyBillWave,
   FaBriefcase,
-  FaCalendarAlt,
   FaCheckCircle,
   FaTimesCircle,
 } from "react-icons/fa";
+import AppliedUserInfo from "../../userInfo/appliedUserInfo/AppliedUserInfo";
 
 interface JobDetailsProps {
   data: {
@@ -24,12 +23,16 @@ interface JobDetailsProps {
 }
 
 const JobDetails: React.FC<JobDetailsProps> = ({ data }) => {
+  const id = data?._id;
   return (
-    <div className='max-w-4xl mx-auto p-6 shadow-md rounded-lg '>
+   
+    <>
+     <div className='max-w-4xl mx-auto p-6 shadow-md rounded-lg '>
       <h1 className='text-3xl font-bold mb-4'>{data.title}</h1>
       <p className=' text-lg mb-4'>{data.description}</p>
 
       <div className='mb-6'>
+     
         <h2 className='text-xl font-semibold mb-2'>Requirements:</h2>
         <ul className='list-disc pl-6  space-y-2'>
           {data.requirements.map((requirement, index) => (
@@ -84,7 +87,8 @@ const JobDetails: React.FC<JobDetailsProps> = ({ data }) => {
         </p>
       </div>
     </div>
-    
+    <AppliedUserInfo id={id}/>
+    </>
   );
 };
 
