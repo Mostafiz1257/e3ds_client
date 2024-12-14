@@ -13,8 +13,10 @@ const page = () => {
   }
   return (
     <div>
-        {allApplications?.map((application) => <ApplicationCard key={application._id} application={application} />)}
-      </div>
+      {allApplications?.map((application) => (
+        <ApplicationCard key={application._id} application={application} />
+      ))}
+    </div>
   );
 };
 

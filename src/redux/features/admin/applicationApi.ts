@@ -26,6 +26,12 @@ const jobApplicationApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ["application"],
     }),
+    getSingleApplication: builder.query({
+      query: (id) => ({
+        url: `/application/${id}`,
+        method: "GET",
+      }),
+    }),
   }),
 });
 
@@ -33,4 +39,5 @@ export const {
   useCreateApplicationMutation,
   useGetAllApplicationQuery,
   useDeleteApplicationMutation,
+  useGetSingleApplicationQuery,
 } = jobApplicationApi;
