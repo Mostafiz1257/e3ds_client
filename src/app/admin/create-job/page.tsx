@@ -4,8 +4,9 @@ import React, { useState } from "react";
 import { Input, Textarea } from "@nextui-org/input";
 import { Button } from "@nextui-org/button";
 import { Select, SelectItem } from "@nextui-org/select";
-import { useCreateJobMutation } from "@/src/redux/features/admin/jobApi";
 import { toast } from "sonner";
+
+import { useCreateJobMutation } from "@/src/redux/features/admin/jobApi";
 
 const Page = () => {
   const [createJob] = useCreateJobMutation();
@@ -20,9 +21,10 @@ const Page = () => {
   });
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
+
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
@@ -38,6 +40,7 @@ const Page = () => {
 
   const handleRequirementChange = (index: number, value: string) => {
     const updatedRequirements = [...formData.requirements];
+
     updatedRequirements[index] = value;
     setFormData((prevData) => ({
       ...prevData,
@@ -54,8 +57,9 @@ const Page = () => {
 
   const removeRequirement = (index: number) => {
     const updatedRequirements = formData.requirements.filter(
-      (_, i) => i !== index
+      (_, i) => i !== index,
     );
+
     setFormData((prevData) => ({
       ...prevData,
       requirements: updatedRequirements,
@@ -67,6 +71,7 @@ const Page = () => {
 
     try {
       const result = await createJob(formData);
+
       if (result?.data?.success) {
         toast.success("Job posted successfully!");
       } else {
@@ -79,28 +84,28 @@ const Page = () => {
 
   return (
     <div className="p-6 max-w-4xl mx-auto">
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form className="space-y-6" onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="w-full">
             <Input
-              label="Job Title"
-              name="title"
-              value={formData.title}
-              onChange={handleChange}
-              placeholder="Enter job title"
               required
               className="input-field w-full"
+              label="Job Title"
+              name="title"
+              placeholder="Enter job title"
+              value={formData.title}
+              onChange={handleChange}
             />
           </div>
           <div className="w-full">
             <Input
-              label="Location"
-              name="location"
-              value={formData.location}
-              onChange={handleChange}
-              placeholder="Enter job location"
               required
               className="input-field w-full"
+              label="Location"
+              name="location"
+              placeholder="Enter job location"
+              value={formData.location}
+              onChange={handleChange}
             />
           </div>
         </div>
@@ -108,22 +113,22 @@ const Page = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="w-full">
             <Input
-              label="Salary Range"
-              name="salaryRange"
-              value={formData.salaryRange}
-              onChange={handleChange}
-              placeholder="Enter salary range"
               required
               className="input-field w-full"
+              label="Salary Range"
+              name="salaryRange"
+              placeholder="Enter salary range"
+              value={formData.salaryRange}
+              onChange={handleChange}
             />
           </div>
           <div className="w-full">
             <Select
+              className="input-field w-full"
               label="Job Type"
+              placeholder="Select job type"
               selectedKeys={new Set([formData.jobType])}
               onSelectionChange={(keys) => handleSelectChange([...keys][0])}
-              placeholder="Select job type"
-              className="input-field w-full"
             >
               <SelectItem key="Full-Time">Full-Time</SelectItem>
               <SelectItem key="Part-Time">Part-Time</SelectItem>
@@ -134,13 +139,13 @@ const Page = () => {
         </div>
 
         <Textarea
-          label="Description"
-          name="description"
-          value={formData.description}
-          onChange={handleChange}
-          placeholder="Enter job description"
           required
           className="input-field w-full"
+          label="Description"
+          name="description"
+          placeholder="Enter job description"
+          value={formData.description}
+          onChange={handleChange}
         />
 
         <div>
@@ -148,36 +153,36 @@ const Page = () => {
           {formData.requirements.map((requirement, index) => (
             <div key={index} className="flex items-center space-x-3 mb-4">
               <Input
-                name={`requirement-${index}`}
-                value={requirement}
-                onChange={(e) => handleRequirementChange(index, e.target.value)}
-                placeholder={`Requirement ${index + 1}`}
                 required
                 className="input-field flex-grow"
+                name={`requirement-${index}`}
+                placeholder={`Requirement ${index + 1}`}
+                value={requirement}
+                onChange={(e) => handleRequirementChange(index, e.target.value)}
               />
               <Button
-                type="button"
-                color="danger"
-                onClick={() => removeRequirement(index)}
                 className="text-sm rounded-full"
+                color="danger"
                 size="sm"
+                type="button"
+                onClick={() => removeRequirement(index)}
               >
                 Remove
               </Button>
             </div>
           ))}
           <Button
-            type="button"
-            color="secondary"
-            onClick={addRequirement}
             className="mt-2 rounded-full"
+            color="primary"
             size="sm"
+            type="button"
+            onClick={addRequirement}
           >
             Add
           </Button>
         </div>
 
-        <Button type="submit" className="rounded-full w-full" color="primary">
+        <Button className="rounded-full w-full" color="primary" type="submit">
           Publish Now
         </Button>
       </form>

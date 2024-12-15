@@ -37,12 +37,12 @@ const ApplicantDetails = ({ data }) => {
     doc.text(
       `Application Created: ${new Date(data?.createdAt).toLocaleDateString()}`,
       10,
-      180
+      180,
     );
     doc.text(
       `Last Updated: ${new Date(data?.updatedAt).toLocaleDateString()}`,
       10,
-      190
+      190,
     );
 
     // Save the PDF
@@ -50,89 +50,89 @@ const ApplicantDetails = ({ data }) => {
   };
 
   return (
-    <div className='max-w-4xl mx-auto p-6  shadow-lg rounded-lg border border-gray-200'>
+    <div className="max-w-4xl mx-auto p-6  shadow-lg rounded-lg border border-gray-200">
       {/* Applicant's Name */}
-      <header className='mb-6 border-b pb-4'>
-        <h1 className='text-3xl font-bold '>{data?.name}</h1>
-        <p className=''>
+      <header className="mb-6 border-b pb-4">
+        <h1 className="text-3xl font-bold ">{data?.name}</h1>
+        <p className="">
           Applying for:{" "}
-          <span className='font-medium'>{data?.jobPost?.title}</span>
+          <span className="font-medium">{data?.jobPost?.title}</span>
         </p>
       </header>
 
       {/* Contact Details */}
-      <section className='mb-6'>
-        <h2 className='text-xl font-semibold mb-3'>Contact Details</h2>
-        <div className='space-y-2'>
+      <section className="mb-6">
+        <h2 className="text-xl font-semibold mb-3">Contact Details</h2>
+        <div className="space-y-2">
           <p>
-            <span className='font-medium '>Email:</span> {data?.email}
+            <span className="font-medium ">Email:</span> {data?.email}
           </p>
           <p>
-            <span className='font-medium '>Website:</span>{" "}
+            <span className="font-medium ">Website:</span>{" "}
             <a
+              className="text-blue-500 hover:underline"
               href={data?.website}
-              target='_blank'
-              rel='noopener noreferrer'
-              className='text-blue-500 hover:underline'
+              rel="noopener noreferrer"
+              target="_blank"
             >
               {data?.website}
             </a>
           </p>
           <p>
-            <span className='font-medium '>LinkedIn:</span>{" "}
+            <span className="font-medium ">LinkedIn:</span>{" "}
             <a
+              className="text-blue-500 hover:underline"
               href={data?.linkedin}
-              target='_blank'
-              rel='noopener noreferrer'
-              className='text-blue-500 hover:underline'
+              rel="noopener noreferrer"
+              target="_blank"
             >
               {data?.linkedin}
             </a>
           </p>
           <p>
-            <span className='font-medium '>Address:</span> {data?.address}
+            <span className="font-medium ">Address:</span> {data?.address}
           </p>
         </div>
       </section>
 
       {/* Resume */}
-      <section className='mb-6'>
-        <h2 className='text-xl font-semibold  mb-3'>Resume</h2>
+      <section className="mb-6">
+        <h2 className="text-xl font-semibold  mb-3">Resume</h2>
         <a
+          className="inline-block px-4 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700"
           href={data?.resume}
-          target='_blank'
-          rel='noopener noreferrer'
-          className='inline-block px-4 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700'
+          rel="noopener noreferrer"
+          target="_blank"
         >
           View Resume
         </a>
       </section>
 
       {/* Job Application Details */}
-      <section className='mb-6'>
-        <h2 className='text-xl font-semibold  mb-3'>Application Details</h2>
-        <div className='space-y-2'>
+      <section className="mb-6">
+        <h2 className="text-xl font-semibold  mb-3">Application Details</h2>
+        <div className="space-y-2">
           <p>
-            <span className='font-medium '>Job Title:</span>{" "}
+            <span className="font-medium ">Job Title:</span>{" "}
             {data?.jobPost?.title}
           </p>
           <p>
-            <span className='font-medium '>Job Type:</span>{" "}
+            <span className="font-medium ">Job Type:</span>{" "}
             {data?.jobPost?.jobType}
           </p>
           <p>
-            <span className='font-medium '>Salary Range:</span>{" "}
+            <span className="font-medium ">Salary Range:</span>{" "}
             {data?.jobPost?.salaryRange}
           </p>
         </div>
       </section>
 
       {/* Requirements */}
-      <section className='mb-6'>
-        <h2 className='text-xl font-semibold  mb-3'>Job Requirements</h2>
-        <ul className='list-disc list-inside space-y-1 '>
+      <section className="mb-6">
+        <h2 className="text-xl font-semibold  mb-3">Job Requirements</h2>
+        <ul className="list-disc list-inside space-y-1 ">
           {data?.jobPost?.requirements?.map((requirement, index) => (
-            <li key={index} className='pl-2'>
+            <li key={index} className="pl-2">
               {requirement}
             </li>
           ))}
@@ -140,23 +140,23 @@ const ApplicantDetails = ({ data }) => {
       </section>
 
       {/* Download Button */}
-      <div className='flex justify-end'>
+      <div className="flex justify-end">
         <button
+          className="px-4 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700"
           onClick={handleDownload}
-          className='px-4 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700'
         >
           Download as PDF
         </button>
       </div>
 
       {/* Timestamps */}
-      <footer className=' text-sm border-t pt-4 mt-6'>
+      <footer className=" text-sm border-t pt-4 mt-6">
         <p>
-          <span className='font-medium'>Application Created:</span>{" "}
+          <span className="font-medium">Application Created:</span>{" "}
           {new Date(data?.createdAt).toLocaleDateString()}
         </p>
         <p>
-          <span className='font-medium'>Last Updated:</span>{" "}
+          <span className="font-medium">Last Updated:</span>{" "}
           {new Date(data?.updatedAt).toLocaleDateString()}
         </p>
       </footer>

@@ -6,8 +6,9 @@ import * as React from "react";
 import { NextUIProvider } from "@nextui-org/system";
 import { useRouter } from "next/navigation";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
-import ReduxProviders from "../lib/ReduxProvider";
 import { Toaster } from "sonner";
+
+import ReduxProviders from "../lib/ReduxProvider";
 
 export interface ProvidersProps {
   children: React.ReactNode;
@@ -27,10 +28,10 @@ export function Providers({ children, themeProps }: ProvidersProps) {
 
   return (
     <NextUIProvider navigate={router.push}>
-        <ReduxProviders>
-          <Toaster/>
-      <NextThemesProvider {...themeProps}>{children}</NextThemesProvider>
-        </ReduxProviders>
+      <ReduxProviders>
+        <Toaster />
+        <NextThemesProvider {...themeProps}>{children}</NextThemesProvider>
+      </ReduxProviders>
     </NextUIProvider>
   );
 }

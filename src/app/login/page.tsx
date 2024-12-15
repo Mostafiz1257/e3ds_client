@@ -1,14 +1,14 @@
 "use client";
-import { useLoginMutation } from "@/src/redux/features/auth/authApi";
-import { setUser } from "@/src/redux/features/auth/authSlice";
-import { useAppDispatch } from "@/src/redux/hooks";
-
-import { TUser } from "@/src/types/type.auth";
-import { verifyToken } from "@/src/utils/verityToken";
 import { Input } from "@nextui-org/input";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
-import { toast } from "sonner"; 
+import { toast } from "sonner";
+
+import { useLoginMutation } from "@/src/redux/features/auth/authApi";
+import { setUser } from "@/src/redux/features/auth/authSlice";
+import { useAppDispatch } from "@/src/redux/hooks";
+import { TUser } from "@/src/types/type.auth";
+import { verifyToken } from "@/src/utils/verityToken";
 
 const LoginPage = () => {
   const [login, { isLoading }] = useLoginMutation();
@@ -18,16 +18,18 @@ const LoginPage = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
+
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
-
     e.preventDefault();
     try {
       const res = await login(formData).unwrap();
+
       console.log(res);
       const user = verifyToken(res.token) as TUser;
+
       dispatch(setUser({ user, token: res.token }));
       toast.success("Login successful!");
       router.push("/");
@@ -43,35 +45,35 @@ const LoginPage = () => {
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <Input
+              required
+              className="w-full"
               label="Email"
               labelPlacement="outside"
-              type="email"
               name="email"
-              className="w-full"
+              type="email"
               value={formData.email}
               onChange={handleChange}
-              required
             />
           </div>
           <div className="mb-4">
             <Input
+              required
+              className="w-full"
               label="Password"
               labelPlacement="outside"
-              type="password"
               name="password"
-              className="w-full"
+              type="password"
               value={formData.password}
               onChange={handleChange}
-              required
             />
           </div>
           <div className="flex justify-center">
             <button
-              type="submit"
               className={`bg-blue-600 py-2 px-4 rounded-xl hover:bg-blue-700 transition duration-200 ${
                 isLoading ? "opacity-50 cursor-not-allowed" : ""
               }`}
               disabled={isLoading}
+              type="submit"
             >
               {isLoading ? "Logging in..." : "Login Now"}
             </button>
@@ -80,7 +82,7 @@ const LoginPage = () => {
         <div className="text-center mt-4">
           <p className="text-gray-600">
             New here?{" "}
-            <a href="/signup" className="text-blue-600 hover:underline">
+            <a className="text-blue-600 hover:underline" href="/signup">
               Sign up
             </a>
           </p>

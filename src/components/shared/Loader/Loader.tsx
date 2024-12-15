@@ -11,7 +11,7 @@ const Loader = () => {
       items-center 
     "
     >
-      <Spinner  height={15} width={5} radius={2} color="#003580" />
+      <Spinner color="#003580" height={15} radius={2} width={5} />
     </div>
   );
 };

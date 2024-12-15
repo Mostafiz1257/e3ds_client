@@ -7,42 +7,37 @@ const Contract = () => {
 
       <div className="space-y-6">
         {/* Name Input */}
-        <Input
-          label="Name"
-          type="text"
-          className="w-full"
-          aria-label="Name"
-        />
+        <Input aria-label="Name" className="w-full" label="Name" type="text" />
 
         {/* Email Input */}
         <Input
+          aria-label="Email"
+          className="w-full"
           label="Email"
           type="email"
-          className="w-full"
-          aria-label="Email"
         />
 
         {/* Website Input */}
         <Input
+          aria-label="Website"
+          className="w-full"
           label="Website"
           type="url"
-          className="w-full"
-          aria-label="Website"
         />
 
         {/* Reason Textarea */}
         <Textarea
+          className="w-full"
           label="Reason"
           placeholder="Enter your reason"
-          className="w-full"
           rows={6}
         />
 
         {/* Submit Button */}
         <div className="flex justify-center">
-        <button className="px-4 py-2 bg-blue-600 rounded-3xl hover:bg-blue-700 transition duration-300">
-         Submit Now
-        </button>
+          <button className="px-4 py-2 bg-blue-600 rounded-3xl hover:bg-blue-700 transition duration-300">
+            Submit Now
+          </button>
         </div>
       </div>
     </div>

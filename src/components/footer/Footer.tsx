@@ -1,5 +1,11 @@
-import React from 'react';
-import { FaFacebook, FaYoutube, FaTwitter, FaGithub, FaLinkedin } from 'react-icons/fa';
+import React from "react";
+import {
+  FaFacebook,
+  FaYoutube,
+  FaTwitter,
+  FaGithub,
+  FaLinkedin,
+} from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -10,11 +16,26 @@ const Footer = () => {
           <div>
             <div className="text-2xl font-bold mb-4">EAGLE 3D STREAMING</div>
             <div className="flex space-x-4">
-              <FaLinkedin className="hover:text-blue-500 cursor-pointer" size={24} />
-              <FaYoutube className="hover:text-red-500 cursor-pointer" size={24} />
-              <FaTwitter className="hover:text-blue-400 cursor-pointer" size={24} />
-              <FaFacebook className="hover:text-blue-700 cursor-pointer" size={24} />
-              <FaGithub className="hover:text-gray-500 cursor-pointer" size={24} />
+              <FaLinkedin
+                className="hover:text-blue-500 cursor-pointer"
+                size={24}
+              />
+              <FaYoutube
+                className="hover:text-red-500 cursor-pointer"
+                size={24}
+              />
+              <FaTwitter
+                className="hover:text-blue-400 cursor-pointer"
+                size={24}
+              />
+              <FaFacebook
+                className="hover:text-blue-700 cursor-pointer"
+                size={24}
+              />
+              <FaGithub
+                className="hover:text-gray-500 cursor-pointer"
+                size={24}
+              />
             </div>
             <div className="mt-4 text-sm">Email: info@eagle3dstreaming.com</div>
           </div>

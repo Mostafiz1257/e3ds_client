@@ -7,9 +7,11 @@ import { useGetAllJobPostQuery } from "@/src/redux/features/admin/jobApi";
 const Page = () => {
   const { data, isLoading } = useGetAllJobPostQuery({});
   const jobPosts = data?.data;
+
   if (isLoading) {
     return <Loader />;
   }
+
   return (
     <>
       <TitleHeader />

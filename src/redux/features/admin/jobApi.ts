@@ -42,7 +42,7 @@ const jobPostApi = baseApi.injectEndpoints({
         method: "DELETE",
       }),
       invalidatesTags: ["job"],
-    })
+    }),
   }),
 });
 
@@ -51,5 +51,5 @@ export const {
   useGetAllJobPostQuery,
   useUpdatePostMutation,
   useGetSinglePostQuery,
-  useDeleteJobPostMutation
+  useDeleteJobPostMutation,
 } = jobPostApi;

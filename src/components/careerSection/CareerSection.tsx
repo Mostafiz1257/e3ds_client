@@ -1,4 +1,4 @@
-import { FaEnvelope, FaArrowRight } from 'react-icons/fa';
+import { FaEnvelope, FaArrowRight } from "react-icons/fa";
 
 const CareerSection = () => {
   return (
@@ -10,9 +10,12 @@ const CareerSection = () => {
             Shape the Future of Streaming with Us
           </h1>
           <p className="text-lg text-gray-400 font-medium">
-            We’re looking for passionate individuals to join our team at Eagle 3D Streaming. Our mission is to innovate and redefine streaming technology. If you’re ready to be part of something exciting, we want to hear from you.
+            We’re looking for passionate individuals to join our team at Eagle
+            3D Streaming. Our mission is to innovate and redefine streaming
+            technology. If you’re ready to be part of something exciting, we
+            want to hear from you.
           </p>
-          
+
           {/* <button className="px-4 py-2 bg-blue-600 rounded-3xl hover:bg-blue-700 transition duration-300">
             Apply Now
           </button> */}
@@ -20,8 +23,12 @@ const CareerSection = () => {
 
         {/* Right side - Contact Information */}
         <div className="space-y-4 p-6 bg-[#1a1a1a] rounded-lg">
-          <h2 className="text-xl font-semibold text-white">Got More Questions?</h2>
-          <p className="text-lg text-gray-400">Feel free to reach out to us directly at:</p>
+          <h2 className="text-xl font-semibold text-white">
+            Got More Questions?
+          </h2>
+          <p className="text-lg text-gray-400">
+            Feel free to reach out to us directly at:
+          </p>
           <div className="flex items-center space-x-4 text-gray-300">
             <FaEnvelope className="h-6 w-6" />
             <p className="text-lg">career@eagle3dstreaming.com</p>

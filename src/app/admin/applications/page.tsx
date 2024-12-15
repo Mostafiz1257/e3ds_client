@@ -7,10 +7,12 @@ import { useGetAllApplicationQuery } from "@/src/redux/features/admin/applicatio
 const page = () => {
   const { data, isLoading } = useGetAllApplicationQuery();
   const allApplications = data?.data;
+
   console.log("applications", allApplications);
   if (isLoading) {
     return <Loader />;
   }
+
   return (
     <div>
       {allApplications?.map((application) => (

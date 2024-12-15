@@ -6,10 +6,6 @@ import { Providers } from "./providers";
 
 import { siteConfig } from "@/src/config/site";
 import { fontSans } from "@/src/config/fonts";
-import Navbar from "../components/navabr/Navbar";
-import Footer from "../components/footer/Footer";
-import Contract from "../components/contract/Contract";
-
 
 export const metadata: Metadata = {
   title: {
@@ -45,12 +41,12 @@ export default function RootLayout({
       >
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
           <div className="relative flex flex-col h-screen">
-           {/* <Navbar/> */}
+            {/* <Navbar/> */}
             <main className="container mx-auto max-w-7xl  flex-grow">
               {children}
-            {/* <Contract/> */}
+              {/* <Contract/> */}
             </main>
-           {/* <Footer/> */}
+            {/* <Footer/> */}
           </div>
         </Providers>
       </body>
