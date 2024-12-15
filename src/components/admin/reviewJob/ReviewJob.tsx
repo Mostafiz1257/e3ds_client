@@ -41,7 +41,7 @@ const ReviewJob = ({ post }) => {
             </Link>
 
             {/* Update Job */}
-            <Link passHref href={`/career-apply/${post?._id}`}>
+            <Link passHref href={`/admin/all-jobs/${post?._id}`}>
               <div className="flex items-center text-blue-400 cursor-pointer">
                 <FaEdit className="mr-2" />
                 <span className="mr-2">update</span>

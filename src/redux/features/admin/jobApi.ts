@@ -19,10 +19,10 @@ const jobPostApi = baseApi.injectEndpoints({
       }),
       providesTags: ["job"],
     }),
-    updatePost: builder.mutation({
-      query: ({ updateData, jobId }) => {
+    updateJobPost: builder.mutation({
+      query: ({ updateData, Id }) => {
         return {
-          url: `/post/${jobId}`,
+          url: `/job/${Id}`,
           method: "PATCH",
           body: updateData,
         };
@@ -49,7 +49,7 @@ const jobPostApi = baseApi.injectEndpoints({
 export const {
   useCreateJobMutation,
   useGetAllJobPostQuery,
-  useUpdatePostMutation,
+  useUpdateJobPostMutation,
   useGetSinglePostQuery,
   useDeleteJobPostMutation,
 } = jobPostApi;
