@@ -2,13 +2,14 @@
 import Link from "next/link";
 import { FaUserFriends, FaEdit, FaTrash, FaEye } from "react-icons/fa";
 import { toast } from "sonner";
+import { Button } from "@nextui-org/button";
 
 import { useDeleteJobPostMutation } from "@/src/redux/features/admin/jobApi";
 
-const ReviewJob = ({ post }) => {
-  const [deleteJobPost, { isLoading }] = useDeleteJobPostMutation();
+const ReviewJob = ({ post }: any) => {
+  const [deleteJobPost] = useDeleteJobPostMutation();
 
-  const handleDelete = async (id) => {
+  const handleDelete = async (id: string) => {
     try {
       await deleteJobPost(id).unwrap();
       toast.success("Post has been Deleted");
@@ -31,31 +32,33 @@ const ReviewJob = ({ post }) => {
             <span>{post?.jobType} , Remote </span>
           </div>
 
-          <div className="flex">
+          <div className="flex md:gap-1">
             {/* View Job */}
             <Link passHref href={`/career-apply/${post?._id}`}>
-              <div className="flex items-center text-teal-400 cursor-pointer">
-                <FaEye className="mr-2" />
-                <span className="mr-2">view</span>
-              </div>
+              <Button className="rounded-full" color="success" size="sm">
+                <FaEye />
+                <span className="text-white">view</span>
+              </Button>
             </Link>
 
             {/* Update Job */}
             <Link passHref href={`/admin/all-jobs/${post?._id}`}>
-              <div className="flex items-center text-blue-400 cursor-pointer">
-                <FaEdit className="mr-2" />
-                <span className="mr-2">update</span>
-              </div>
+              <Button className="rounded-full" color="primary" size="sm">
+                <FaEdit />
+                <span>update</span>
+              </Button>
             </Link>
 
             {/* Delete Job */}
-            <div
-              className="flex items-center text-red-400 cursor-pointer"
-              onClick={() => handleDelete(post?._id)} // Pass the id explicitly
+            <Button
+              className="rounded-full"
+              color="danger"
+              size="sm"
+              onClick={() => handleDelete(post?._id)}
             >
-              <FaTrash className="mr-2" />
-              <span className="mr-2">Delete</span>
-            </div>
+              <FaTrash />
+              <span>Delete</span>
+            </Button>
           </div>
         </div>
       </div>

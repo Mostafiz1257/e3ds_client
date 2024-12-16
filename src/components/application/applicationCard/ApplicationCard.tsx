@@ -1,11 +1,12 @@
 "use client";
-import { useDeleteApplicationMutation } from "@/src/redux/features/admin/applicationApi";
 import Link from "next/link";
 import React from "react";
 import { FaTrash, FaEye } from "react-icons/fa";
 import { toast } from "sonner";
 
-const ApplicationCard = ({ application }) => {
+import { useDeleteApplicationMutation } from "@/src/redux/features/admin/applicationApi";
+
+const ApplicationCard = ({ application }: any) => {
   const [deleteApplication, { isLoading }] = useDeleteApplicationMutation();
 
   const handleDelete = async () => {
@@ -55,9 +56,9 @@ const ApplicationCard = ({ application }) => {
 
           {/* Delete Button */}
           <button
-            onClick={handleDelete}
-            disabled={isLoading}
             className="flex items-center gap-1 text-pink-500 rounded-md transition-all duration-200"
+            disabled={isLoading}
+            onClick={handleDelete}
           >
             <FaTrash />
             {isLoading ? "Deleting..." : "Delete"}

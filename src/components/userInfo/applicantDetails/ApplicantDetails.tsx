@@ -1,7 +1,7 @@
 import React from "react";
 import jsPDF from "jspdf";
 
-const ApplicantDetails = ({ data }) => {
+const ApplicantDetails = ({ data }: any) => {
   const handleDownload = () => {
     // Create a new instance of jsPDF
     const doc = new jsPDF();
@@ -30,7 +30,7 @@ const ApplicantDetails = ({ data }) => {
     doc.text(`- Salary Range: ${data?.jobPost?.salaryRange}`, 10, 140);
 
     doc.text(`Job Requirements:`, 10, 150);
-    data?.jobPost?.requirements?.forEach((req, index) => {
+    data?.jobPost?.requirements?.forEach((req: any, index: any) => {
       doc.text(`  ${index + 1}. ${req}`, 10, 160 + index * 10);
     });
 
@@ -131,7 +131,7 @@ const ApplicantDetails = ({ data }) => {
       <section className="mb-6">
         <h2 className="text-xl font-semibold  mb-3">Job Requirements</h2>
         <ul className="list-disc list-inside space-y-1 ">
-          {data?.jobPost?.requirements?.map((requirement, index) => (
+          {data?.jobPost?.requirements?.map((requirement: any, index: any) => (
             <li key={index} className="pl-2">
               {requirement}
             </li>

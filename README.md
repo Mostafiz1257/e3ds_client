@@ -1,53 +1,53 @@
-# Next.js & NextUI Template
+# Eagle 3D Streaming Career Portal  
 
-This is a template for creating applications using Next.js 14 (app directory) and NextUI (v2).
+## Table of Contents  
+- [Description](#description)  
+- [Features](#features)  
+  - [Admin Features](#admin-features)  
+  - [User Features](#user-features)  
+- [Technology Stack](#technology-stack)  
+  - [Frontend](#frontend)  
+- [Setup Instructions](#setup-instructions)  
+- [Folder Structure](#folder-structure)  
+- [Screenshots](#screenshots)  
+- [Contributing](#contributing)  
+- [License](#license)  
+- [Contact](#contact)  
 
-[Try it on CodeSandbox](https://githubbox.com/nextui-org/next-app-template)
+---  
 
-## Technologies Used
+## Description  
+Eagle 3D Streaming Career Portal is a job management platform built with modern technologies to deliver a seamless user experience. Administrators can manage job postings, and users can explore and apply for jobs, ensuring an efficient recruitment process.  
 
-- [Next.js 14](https://nextjs.org/docs/getting-started)
-- [NextUI v2](https://nextui.org/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Tailwind Variants](https://tailwind-variants.org)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Framer Motion](https://www.framer.com/motion/)
-- [next-themes](https://github.com/pacocoursey/next-themes)
+---  
 
-## How to Use
+## Features  
 
-### Use the template with create-next-app
+### Admin Features  
+- **Post Job Listings**: Add new job openings.  
+- **Edit Job Details**: Modify existing job information.  
+- **Manage Applications**: View and process user-submitted applications.  
+- **Delete Jobs**: Remove outdated or filled job listings.  
 
-To create a new project based on this template using `create-next-app`, run the following command:
+### User Features  
+- **Explore Jobs**: Browse job listings by title, description, and requirements.  
+- **Apply for Jobs**: Submit applications with attached resumes.  
 
-```bash
-npx create-next-app -e https://github.com/nextui-org/next-app-template
-```
 
-### Install dependencies
+---  
 
-You can use one of them `npm`, `yarn`, `pnpm`, `bun`, Example using `npm`:
+## Technology Stack  
 
-```bash
-npm install
-```
+### Frontend  
+- **Next.js**: Framework for server-rendered React applications.  
+- **TypeScript**: For type-safe development.  
+- **NextUI**: Beautiful and customizable UI components for React.  
+- **Tailwind CSS**: Utility-first CSS framework for rapid UI development.  
 
-### Run the development server
+---  
 
-```bash
-npm run dev
-```
+## Setup Instructions  
 
-### Setup pnpm (optional)
-
-If you are using `pnpm`, you need to add the following code to your `.npmrc` file:
-
-```bash
-public-hoist-pattern[]=*@nextui-org/*
-```
-
-After modifying the `.npmrc` file, you need to run `pnpm install` again to ensure that the dependencies are installed correctly.
-
-## License
-
-Licensed under the [MIT license](https://github.com/nextui-org/next-app-template/blob/main/LICENSE).
+1. **Clone the repository**:  
+   ```bash  
+   git clone https://github.com/Mostafiz1257/e3ds_client  

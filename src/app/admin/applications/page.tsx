@@ -3,12 +3,12 @@
 import ApplicationCard from "@/src/components/application/applicationCard/ApplicationCard";
 import Loader from "@/src/components/shared/Loader/Loader";
 import { useGetAllApplicationQuery } from "@/src/redux/features/admin/applicationApi";
+import { IJobApplication } from "@/src/types/application.type";
 
-const page = () => {
-  const { data, isLoading } = useGetAllApplicationQuery();
-  const allApplications = data?.data;
+const Page = () => {
+  const { data, isLoading } = useGetAllApplicationQuery({});
+  const allApplications: IJobApplication[] | undefined = data?.data;
 
-  console.log("applications", allApplications);
   if (isLoading) {
     return <Loader />;
   }
@@ -22,4 +22,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

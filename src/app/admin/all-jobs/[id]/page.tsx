@@ -5,6 +5,7 @@ import { Input, Textarea } from "@nextui-org/input";
 import { Button } from "@nextui-org/button";
 import { Select, SelectItem } from "@nextui-org/select";
 import { toast } from "sonner";
+
 import { useUpdateJobPostMutation } from "@/src/redux/features/admin/jobApi";
 
 interface Params {
@@ -17,7 +18,7 @@ interface Props {
 const Page = ({ params }: Props) => {
   const resolvedParams = use(params);
   const { id } = resolvedParams;
-  const [updateJobPost, { isLoading }] = useUpdateJobPostMutation();
+  const [updateJobPost] = useUpdateJobPostMutation();
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -32,6 +33,7 @@ const Page = ({ params }: Props) => {
     const fetchJobPost = async () => {
       const response = await fetch(`/api/job/${id}`);
       const data = await response.json();
+
       setFormData(data);
     };
 
@@ -95,8 +97,8 @@ const Page = ({ params }: Props) => {
       } else {
         toast.error("Failed to update the job. Please try again.");
       }
-    } catch (error) {
-      toast.error("An error occurred. Please try again.");
+    } catch (error: any) {
+      toast.error(error.message);
     }
   };
 
@@ -146,7 +148,11 @@ const Page = ({ params }: Props) => {
               label="Job Type"
               placeholder="Select job type"
               selectedKeys={new Set([formData.jobType])}
-              onSelectionChange={(keys) => handleSelectChange([...keys][0])}
+              onSelectionChange={(keys) => {
+                const selectedKey = Array.from(keys)[0] as string;
+
+                handleSelectChange(selectedKey);
+              }}
             >
               <SelectItem key="Full-Time">Full-Time</SelectItem>
               <SelectItem key="Part-Time">Part-Time</SelectItem>
@@ -167,12 +173,15 @@ const Page = ({ params }: Props) => {
         />
 
         <div>
-          <label className="block text-sm font-medium">Requirements</label>
+          <label className="block text-sm font-medium" htmlFor="requirements">
+            Requirements
+          </label>
           {formData.requirements.map((requirement, index) => (
             <div key={index} className="flex items-center space-x-3 mb-4">
               <Input
                 required
                 className="input-field flex-grow"
+                id={`requirement-${index}`}
                 name={`requirement-${index}`}
                 placeholder={`Requirement ${index + 1}`}
                 value={requirement}
@@ -199,10 +208,11 @@ const Page = ({ params }: Props) => {
             Add
           </Button>
         </div>
-
-        <Button className="rounded-full w-full" color="primary" type="submit">
-          Update Job
-        </Button>
+        <div className="flex justify-end">
+          <Button className="rounded-full w-1/4 " color="primary" type="submit">
+            Update Job
+          </Button>
+        </div>
       </form>
     </div>
   );

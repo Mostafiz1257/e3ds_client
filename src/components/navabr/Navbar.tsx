@@ -1,6 +1,5 @@
-
 import Link from "next/link";
-import React, { Suspense } from "react";
+import React from "react";
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 import ShowAdmin from "./ShowAdmin";
@@ -26,7 +25,7 @@ const Navbar = () => {
           <li className="hover:text-[#003580] cursor-pointer">Solutions</li>
           <li className="hover:text-[#003580] cursor-pointer">Resources</li>
           <li className="hover:text-[#003580] cursor-pointer">Support</li>
-            <ShowAdmin />
+          <ShowAdmin />
         </ul>
 
         {/* Social Icons */}
@@ -47,10 +46,10 @@ const Navbar = () => {
             className="hover:text-[#003580] cursor-pointer"
             size={20}
           />
-           <button className="px-4 py-2 bg-blue-600 rounded-3xl hover:bg-blue-700 transition duration-300">
+          <button className="px-4 py-2 bg-blue-600 rounded-3xl hover:bg-blue-700 transition duration-300">
             Stream
           </button>
-        <ShowLogin/>
+          <ShowLogin />
         </div>
 
         {/* Mobile Menu Button */}

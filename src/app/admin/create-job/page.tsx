@@ -21,7 +21,7 @@ const Page = () => {
   });
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
 
@@ -31,13 +31,23 @@ const Page = () => {
     }));
   };
 
-  const handleSelectChange = (value: string) => {
-    setFormData((prevData) => ({
-      ...prevData,
-      jobType: value,
-    }));
+  // Updated handleSelectChange with correct typing for SharedSelection
+  const handleSelectChange = (keys: React.Key | Set<React.Key>) => {
+    if (typeof keys === "string") {
+      // If it's a string (single selection)
+      setFormData((prevData) => ({
+        ...prevData,
+        jobType: keys,
+      }));
+    } else if (keys instanceof Set) {
+      // If it's a Set (multiple selection), extract the first value
+      const selectedValue = Array.from(keys)[0]; // Take the first selected key
+      setFormData((prevData) => ({
+        ...prevData,
+        jobType: selectedValue as string, // Ensure it’s a string
+      }));
+    }
   };
-
   const handleRequirementChange = (index: number, value: string) => {
     const updatedRequirements = [...formData.requirements];
 
@@ -57,7 +67,7 @@ const Page = () => {
 
   const removeRequirement = (index: number) => {
     const updatedRequirements = formData.requirements.filter(
-      (_, i) => i !== index,
+      (_, i) => i !== index
     );
 
     setFormData((prevData) => ({
@@ -71,13 +81,13 @@ const Page = () => {
 
     try {
       const result = await createJob(formData);
-
       if (result?.data?.success) {
         toast.success("Job posted successfully!");
       } else {
         toast.error("Failed to post the job. Please try again.");
       }
     } catch (error) {
+      console.error("Error details:", error);
       toast.error("An error occurred. Please try again.");
     }
   };
@@ -128,7 +138,7 @@ const Page = () => {
               label="Job Type"
               placeholder="Select job type"
               selectedKeys={new Set([formData.jobType])}
-              onSelectionChange={(keys) => handleSelectChange([...keys][0])}
+              onSelectionChange={handleSelectChange} // Correctly typed here
             >
               <SelectItem key="Full-Time">Full-Time</SelectItem>
               <SelectItem key="Part-Time">Part-Time</SelectItem>
@@ -149,12 +159,15 @@ const Page = () => {
         />
 
         <div>
-          <label className="block text-sm font-medium">Requirements</label>
+          <label className="block text-sm font-medium" htmlFor="requirements">
+            Requirements
+          </label>
           {formData.requirements.map((requirement, index) => (
             <div key={index} className="flex items-center space-x-3 mb-4">
               <Input
                 required
                 className="input-field flex-grow"
+                id={`requirement-${index}`} // Unique id for each input
                 name={`requirement-${index}`}
                 placeholder={`Requirement ${index + 1}`}
                 value={requirement}
@@ -182,9 +195,11 @@ const Page = () => {
           </Button>
         </div>
 
-        <Button className="rounded-full w-full" color="primary" type="submit">
-          Publish Now
-        </Button>
+        <div className="flex justify-end">
+          <Button className="rounded-full w-1/4" color="primary" type="submit">
+            Publish Now
+          </Button>
+        </div>
       </form>
     </div>
   );

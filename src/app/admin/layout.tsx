@@ -24,7 +24,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   };
 
   return (
-    <div className='flex h-screen'>
+    <div className="flex h-screen">
       {/* Sidebar Section */}
       <div
         className={`flex flex-col justify-between bg-gray-950 h-full transition-width duration-300 ${
@@ -32,7 +32,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         }`}
       >
         {/* Top Section: Brand and Toggle Icon */}
-        <div className='flex items-center justify-between px-4 py-4 border-b border-gray-800'>
+        <div className="flex items-center justify-between px-4 py-4 border-b border-gray-800">
           <p
             className={`text-2xl font-bold text-white transition-opacity duration-300 ${
               isSidebarOpen ? "opacity-100" : "opacity-0"
@@ -41,7 +41,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
             E3DS Admin
           </p>
           <button
-            className='text-white hover:text-blue-500'
+            className="text-white hover:text-blue-500"
             onClick={toggleSidebar}
           >
             {isSidebarOpen ? (
@@ -53,60 +53,60 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         </div>
 
         {/* Middle Section: Navigation Links */}
-        <nav className='flex-1 flex flex-col mt-6 space-y-2'>
-          <Link className='group w-full' href='/admin/create-job'>
-            <div className='flex items-center px-4 py-2 hover:bg-gray-800 rounded-md transition'>
+        <nav className="flex-1 flex flex-col mt-6 space-y-2">
+          <Link className="group w-full" href="/admin/create-job">
+            <div className="flex items-center px-4 py-2 hover:bg-gray-800 rounded-md transition">
               <FaPlus
-                className='text-white group-hover:text-blue-500'
+                className="text-white group-hover:text-blue-500"
                 size={24}
               />
               {isSidebarOpen && (
-                <span className='ml-4 text-white group-hover:text-blue-500'>
+                <span className="ml-4 text-white group-hover:text-blue-500">
                   Create Job
                 </span>
               )}
             </div>
           </Link>
 
-          <Link className='group w-full' href='/admin/all-jobs'>
-            <div className='flex items-center px-4 py-2 hover:bg-gray-800 rounded-md transition'>
+          <Link className="group w-full" href="/admin/all-jobs">
+            <div className="flex items-center px-4 py-2 hover:bg-gray-800 rounded-md transition">
               <MdWorkOutline
-                className='text-white group-hover:text-blue-500'
+                className="text-white group-hover:text-blue-500"
                 size={24}
               />
               {isSidebarOpen && (
-                <span className='ml-4 text-white group-hover:text-blue-500'>
+                <span className="ml-4 text-white group-hover:text-blue-500">
                   All Jobs
                 </span>
               )}
             </div>
           </Link>
 
-          <Link className='group w-full' href='/admin/applications'>
-            <div className='flex items-center px-4 py-2 hover:bg-gray-800 rounded-md transition'>
+          <Link className="group w-full" href="/admin/applications">
+            <div className="flex items-center px-4 py-2 hover:bg-gray-800 rounded-md transition">
               <FaClipboardList
-                className='text-white group-hover:text-blue-500'
+                className="text-white group-hover:text-blue-500"
                 size={24}
               />
               {isSidebarOpen && (
-                <span className='ml-4 text-white group-hover:text-blue-500'>
+                <span className="ml-4 text-white group-hover:text-blue-500">
                   Applications
                 </span>
               )}
             </div>
           </Link>
 
-          <div className='border-t border-gray-800 my-4' />
+          <div className="border-t border-gray-800 my-4" />
 
           {/* Bottom Section: Home and Logout */}
-          <Link className='group w-full mt-auto' href='/'>
-            <div className='flex items-center px-4 py-2 hover:bg-gray-800 rounded-md transition'>
+          <Link className="group w-full mt-auto" href="/">
+            <div className="flex items-center px-4 py-2 hover:bg-gray-800 rounded-md transition">
               <FaHome
-                className='text-white group-hover:text-blue-500'
+                className="text-white group-hover:text-blue-500"
                 size={24}
               />
               {isSidebarOpen && (
-                <span className='ml-4 text-white group-hover:text-blue-500'>
+                <span className="ml-4 text-white group-hover:text-blue-500">
                   Home
                 </span>
               )}
@@ -114,15 +114,15 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           </Link>
           <Link href={"/"}>
             <button
-              className='group w-full px-4 py-2 mt-2 hover:bg-gray-800 rounded-md transition flex items-center'
+              className="group w-full px-4 py-2 mt-2 hover:bg-gray-800 rounded-md transition flex items-center"
               onClick={handleLogout}
             >
               <FaSignOutAlt
-                className='text-white group-hover:text-red-500'
+                className="text-white group-hover:text-red-500"
                 size={24}
               />
               {isSidebarOpen && (
-                <span className='ml-4 text-white group-hover:text-red-500'>
+                <span className="ml-4 text-white group-hover:text-red-500">
                   Logout
                 </span>
               )}
@@ -132,14 +132,14 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 
         {/* Footer Section */}
         {isSidebarOpen && (
-          <div className='flex justify-center items-center py-4 border-t border-gray-800'>
-            <p className='text-sm text-gray-400'>© 2024 JobPortal</p>
+          <div className="flex justify-center items-center py-4 border-t border-gray-800">
+            <p className="text-sm text-gray-400">© 2024 JobPortal</p>
           </div>
         )}
       </div>
 
       {/* Main Content Section */}
-      <div className='flex-1 overflow-auto p-6'>{children}</div>
+      <div className="flex-1 overflow-auto p-6">{children}</div>
     </div>
   );
 };

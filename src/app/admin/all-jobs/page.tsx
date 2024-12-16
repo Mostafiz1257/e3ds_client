@@ -2,9 +2,10 @@
 import ReviewJob from "@/src/components/admin/reviewJob/ReviewJob";
 import Loader from "@/src/components/shared/Loader/Loader";
 import { useGetAllJobPostQuery } from "@/src/redux/features/admin/jobApi";
+import { IJobPost } from "@/src/types/jobPost.type";
 const Page = () => {
   const { data, isLoading } = useGetAllJobPostQuery({});
-  const jobPosts = data?.data;
+  const jobPosts: IJobPost[] | undefined = data?.data;
 
   if (isLoading) {
     return <Loader />;

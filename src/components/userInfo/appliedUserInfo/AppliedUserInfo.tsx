@@ -17,7 +17,9 @@ const AppliedUserInfo = ({ id }: { id: string }) => {
     jobPost: id,
   });
 
-  const handleChange = (e) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     const { name, value } = e.target;
 
     setFormData((prevData) => ({
@@ -25,7 +27,6 @@ const AppliedUserInfo = ({ id }: { id: string }) => {
       [name]: value,
     }));
   };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true); // Start loading

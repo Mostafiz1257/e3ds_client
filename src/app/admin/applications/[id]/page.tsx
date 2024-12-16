@@ -13,7 +13,7 @@ interface Props {
   params: Promise<Params>;
 }
 
-const page = ({ params }: Props) => {
+const Page = ({ params }: Props) => {
   const resolvedParams = use(params);
   const { id } = resolvedParams;
   const { data: applicantData, isLoading } = useGetSingleApplicationQuery(id);
@@ -28,4 +28,4 @@ const page = ({ params }: Props) => {
   );
 };
 
-export default page;
+export default Page;

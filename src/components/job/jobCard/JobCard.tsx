@@ -2,7 +2,7 @@ import Link from "next/link";
 import { FaUserFriends } from "react-icons/fa";
 import { FiArrowRight } from "react-icons/fi";
 
-const JobCard = ({ post }) => {
+const JobCard = ({ post }: any) => {
   return (
     <div className="">
       <div className=" hover:border-blue-700 transition duration-200 mt-3 text-white p-6 rounded-lg border border-gray-700 shadow-lg max-w-5xl mx-auto">
