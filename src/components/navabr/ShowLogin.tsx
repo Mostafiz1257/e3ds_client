@@ -20,7 +20,7 @@ const ShowLogin = () => {
     <>
       {user?.role !== "admin" && (
         <Link href={"/login"}>
-          <Button className="px-4 py-2 bg-blue-600 rounded-3xl hover:bg-blue-700 transition duration-300">
+          <Button className="md:px-4 md:py-2 sm:w-full  bg-blue-600 rounded-3xl hover:bg-blue-700 transition duration-300">
             Login
           </Button>
         </Link>

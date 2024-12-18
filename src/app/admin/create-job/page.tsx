@@ -21,7 +21,7 @@ const Page = () => {
   });
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
 
@@ -42,6 +42,7 @@ const Page = () => {
     } else if (keys instanceof Set) {
       // If it's a Set (multiple selection), extract the first value
       const selectedValue = Array.from(keys)[0]; // Take the first selected key
+
       setFormData((prevData) => ({
         ...prevData,
         jobType: selectedValue as string, // Ensure it’s a string
@@ -67,7 +68,7 @@ const Page = () => {
 
   const removeRequirement = (index: number) => {
     const updatedRequirements = formData.requirements.filter(
-      (_, i) => i !== index
+      (_, i) => i !== index,
     );
 
     setFormData((prevData) => ({
@@ -81,6 +82,7 @@ const Page = () => {
 
     try {
       const result = await createJob(formData);
+
       if (result?.data?.success) {
         toast.success("Job posted successfully!");
       } else {
@@ -196,7 +198,7 @@ const Page = () => {
         </div>
 
         <div className="flex justify-end">
-          <Button className="rounded-full w-1/4" color="primary" type="submit">
+          <Button className="rounded-full md:w-1/4" color="primary" type="submit">
             Publish Now
           </Button>
         </div>

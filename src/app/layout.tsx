@@ -1,11 +1,10 @@
 import "@/src/styles/globals.css";
 import { Metadata, Viewport } from "next";
 import clsx from "clsx";
-
 import { Providers } from "./providers";
-
 import { siteConfig } from "@/src/config/site";
 import { fontSans } from "@/src/config/fonts";
+
 
 export const metadata: Metadata = {
   title: {
@@ -43,10 +42,11 @@ export default function RootLayout({
           <div className="relative flex flex-col h-screen">
             {/* <Navbar/> */}
             <main className="container mx-auto max-w-7xl  flex-grow">
+              
               {children}
-              {/* <Contract/> */}
+             
             </main>
-            {/* <Footer/> */}
+           
           </div>
         </Providers>
       </body>
