@@ -7,7 +7,7 @@ import { IJobPost } from "@/src/types/jobPost.type";
 
 const Page = () => {
   const { data, isLoading } = useGetAllJobPostQuery({});
-  // const jobPosts = data?.data;
+
   const jobPosts: IJobPost[] | undefined = data?.data;
 
   if (isLoading) {

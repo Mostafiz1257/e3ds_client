@@ -23,7 +23,7 @@ const Page = ({ params }: Props) => {
     return <Loader />;
   }
 
-  return <div>{data ? <JobDetails data={data} /> : <p>No job found.</p>}</div>;
+  return <div className="mt-12">{data ? <JobDetails data={data} /> : <p>No job found.</p>}</div>;
 };
 
 export default Page;

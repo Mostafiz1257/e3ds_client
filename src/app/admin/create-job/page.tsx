@@ -21,7 +21,7 @@ const Page = () => {
   });
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
 
@@ -68,7 +68,7 @@ const Page = () => {
 
   const removeRequirement = (index: number) => {
     const updatedRequirements = formData.requirements.filter(
-      (_, i) => i !== index,
+      (_, i) => i !== index
     );
 
     setFormData((prevData) => ({
@@ -95,91 +95,91 @@ const Page = () => {
   };
 
   return (
-    <div className="p-6 max-w-4xl mx-auto">
-      <form className="space-y-6" onSubmit={handleSubmit}>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="w-full">
+    <div className='p-6 max-w-4xl mx-auto'>
+      <form className='space-y-6' onSubmit={handleSubmit}>
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
+          <div className='w-full'>
             <Input
               required
-              className="input-field w-full"
-              label="Job Title"
-              name="title"
-              placeholder="Enter job title"
+              className='input-field w-full'
+              label='Job Title'
+              name='title'
+              placeholder='Enter job title'
               value={formData.title}
               onChange={handleChange}
             />
           </div>
-          <div className="w-full">
+          <div className='w-full'>
             <Input
               required
-              className="input-field w-full"
-              label="Location"
-              name="location"
-              placeholder="Enter job location"
+              className='input-field w-full'
+              label='Location'
+              name='location'
+              placeholder='Enter job location'
               value={formData.location}
               onChange={handleChange}
             />
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="w-full">
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
+          <div className='w-full'>
             <Input
               required
-              className="input-field w-full"
-              label="Salary Range"
-              name="salaryRange"
-              placeholder="Enter salary range"
+              className='input-field w-full'
+              label='Salary Range'
+              name='salaryRange'
+              placeholder='Enter salary range'
               value={formData.salaryRange}
               onChange={handleChange}
             />
           </div>
-          <div className="w-full">
+          <div className='w-full'>
             <Select
-              className="input-field w-full"
-              label="Job Type"
-              placeholder="Select job type"
+              className='input-field w-full'
+              label='Job Type'
+              placeholder='Select job type'
               selectedKeys={new Set([formData.jobType])}
               onSelectionChange={handleSelectChange} // Correctly typed here
             >
-              <SelectItem key="Full-Time">Full-Time</SelectItem>
-              <SelectItem key="Part-Time">Part-Time</SelectItem>
-              <SelectItem key="Contract">Contract</SelectItem>
-              <SelectItem key="Internship">Internship</SelectItem>
+              <SelectItem key='Full-Time'>Full-Time</SelectItem>
+              <SelectItem key='Part-Time'>Part-Time</SelectItem>
+              <SelectItem key='Contract'>Contract</SelectItem>
+              <SelectItem key='Internship'>Internship</SelectItem>
             </Select>
           </div>
         </div>
 
         <Textarea
           required
-          className="input-field w-full"
-          label="Description"
-          name="description"
-          placeholder="Enter job description"
+          className='input-field w-full'
+          label='Description'
+          name='description'
+          placeholder='Enter job description'
           value={formData.description}
           onChange={handleChange}
         />
 
         <div>
-          <label className="block text-sm font-medium" htmlFor="requirements">
+          <label className='block text-sm font-medium' htmlFor='requirements'>
             Requirements
           </label>
           {formData.requirements.map((requirement, index) => (
-            <div key={index} className="flex items-center space-x-3 mb-4">
+            <div key={index} className='flex items-center space-x-3 mb-4'>
               <Input
                 required
-                className="input-field flex-grow"
-                id={`requirement-${index}`} // Unique id for each input
+                className='input-field flex-grow'
+                id={`requirement-${index}`}
                 name={`requirement-${index}`}
                 placeholder={`Requirement ${index + 1}`}
                 value={requirement}
                 onChange={(e) => handleRequirementChange(index, e.target.value)}
               />
               <Button
-                className="text-sm rounded-full"
-                color="danger"
-                size="sm"
-                type="button"
+                className='text-sm rounded-full'
+                color='danger'
+                size='sm'
+                type='button'
                 onClick={() => removeRequirement(index)}
               >
                 Remove
@@ -187,18 +187,22 @@ const Page = () => {
             </div>
           ))}
           <Button
-            className="mt-2 rounded-full"
-            color="primary"
-            size="sm"
-            type="button"
+            className='mt-2 rounded-full'
+            color='primary'
+            size='sm'
+            type='button'
             onClick={addRequirement}
           >
             Add
           </Button>
         </div>
 
-        <div className="flex justify-end">
-          <Button className="rounded-full md:w-1/4" color="primary" type="submit">
+        <div className='flex justify-end'>
+          <Button
+            className='rounded-full md:w-1/4'
+            color='primary'
+            type='submit'
+          >
             Publish Now
           </Button>
         </div>

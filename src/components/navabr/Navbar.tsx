@@ -12,6 +12,7 @@ const Navbar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isClient, setIsClient] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false); // State to track scroll position
   const user = useAppSelector(currentUser);
 
   useEffect(() => {
@@ -20,11 +21,17 @@ const Navbar = () => {
       setIsMobile(window.innerWidth < 800); // Adjust breakpoint if needed
     };
 
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50); // Set scroll threshold, adjust as needed
+    };
+
     handleResize(); // Call on mount
     window.addEventListener("resize", handleResize);
+    window.addEventListener("scroll", handleScroll); // Add scroll listener
 
     return () => {
       window.removeEventListener("resize", handleResize);
+      window.removeEventListener("scroll", handleScroll); // Clean up scroll listener
     };
   }, []);
 
@@ -43,14 +50,17 @@ const Navbar = () => {
   const buttonStyles =
     "w-full px-4 py-2 bg-blue-600 rounded-3xl hover:bg-blue-700 text-white transition duration-300 text-center";
 
-  const smallDeviceButtonStyles = "px-4 py-2 mb-2 text-white rounded-3xl";
+  const smallDeviceButtonStyles = "px-4 py-2 text-white rounded-3xl";
 
   return (
-    <nav className='bg-black shadow-md sticky top-0 z-50'>
-      <div className='container mx-auto px-4 py-4 flex justify-between items-center'>
-        {/* Logo */}
+    <nav
+      className={` fixed w-full top-0 z-50 pt-4 transition-all duration-300 ${
+        isScrolled ? "bg-black" : "bg-transparent"
+      }`} // Conditionally apply black background on scroll
+    >
+      <div className='container mx-auto px-4 flex justify-between items-center'>
         <Link href={"/"}>
-          <div className='text-2xl font-bold text-white'>E3DS</div>
+          <div className='text-2xl -mt-4 font-bold text-white'>E3DS</div>
         </Link>
 
         <ul className='hidden md:flex space-x-8 text-white font-medium'>
@@ -58,15 +68,14 @@ const Navbar = () => {
             <li className='hover:text-[#003580] cursor-pointer'>Home</li>
           </Link>
           <AboutMenu />
-          <ProductMenu/>
+          <ProductMenu />
           <li className='hover:text-[#003580] cursor-pointer'>Pricing</li>
-         
           <li className='hover:text-[#003580] cursor-pointer'>Resources</li>
           <li className='hover:text-[#003580] cursor-pointer'>Support</li>
           <ShowAdmin />
         </ul>
 
-        <div className='hidden md:flex space-x-4 items-center'>
+        <div className='hidden md:flex space-x-4 items-center -mt-4'>
           <FaFacebook
             className='hover:text-[#003580] cursor-pointer'
             size={20}
