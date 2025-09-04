@@ -34,7 +34,7 @@ const LoginPage = () => {
       toast.success("Login successful!");
       router.push("/");
     } catch (error: any) {
-      toast.error(error?.data?.message || "Login failed. Please try again.");
+      toast.error(error?.data?.message || "Login failed. Try again.");
     }
   };
 
